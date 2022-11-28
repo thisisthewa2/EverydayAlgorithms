@@ -1,2 +1,2 @@
 # EverydayAlgorithms
-# The algorithm problems I solved
+### The algorithm problems I solved
