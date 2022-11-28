@@ -1,0 +1,23 @@
+#1. Brute force way : O(n^2) But it exceeds time limit often. 
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        len2 = len(nums)
+        output=[]
+        for i in range(len2):
+            for j in range(i):
+                if nums[i]+nums[j] == target:
+                    output.append(i)
+                    output.append(j)
+                    return(output)      
+                    
+                    
+#2. Use Hash function  : O(n) Leetcode's solution
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+        hashmap = {}
+        for i in range(len(nums)):
+            hashmap[nums[i]] = i
+        for i in range(len(nums)):
+            complement = target - nums[i] 
+            if complement in hashmap and hashmap[complement] != i:
+                return [i, hashmap[complement]] 
