@@ -1,0 +1,18 @@
+#1. using count function > time limits exceeded
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        for i in nums:
+            if nums.count(i)>=2:
+                return True
+
+        return False
+
+#2. sort list and compare from the first
+class Solution:
+    def containsDuplicate(self, nums: List[int]) -> bool:
+        val = nums[0]
+        nums.sort()
+        for i in range(len(nums)-1):
+            if nums[i] == nums[i+1]:
+                return True
+        return False
