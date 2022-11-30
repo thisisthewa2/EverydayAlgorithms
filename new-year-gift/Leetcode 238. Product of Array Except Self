@@ -1,16 +1,3 @@
-"""
-
-nums = [1,2,3,4,5]
-product of array without 3?
-1 2 | 3 | 4 5
-1*2*4*5
-
-divide list by self as left and right and product individually and product left and right
-
-left = [1,2,6,24,120]
-right = [120,120,60,20,5]
-p = [120,240,360,480,600]
-"""
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         p=[]
