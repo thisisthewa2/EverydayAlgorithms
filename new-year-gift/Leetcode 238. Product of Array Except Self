@@ -1,1 +1,39 @@
+"""
 
+nums = [1,2,3,4,5]
+product of array without 3?
+1 2 | 3 | 4 5
+1*2*4*5
+
+divide list by self as left and right and product individually and product left and right
+
+left = [1,2,6,24,120]
+right = [120,120,60,20,5]
+p = [120,240,360,480,600]
+"""
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+        p=[]
+        n = len(nums)
+        left = [0 for i in range(n)]
+        right = [0 for i in range(n)]
+        p = [0 for i in range(n)]
+        left[0] = nums[0]
+        right[n-1] = nums[n-1]
+        p[0]=1
+        p[n-1]=1
+        
+        for i in range(1,n):
+            p[0] *= nums[i]
+        for i in range(n-1):
+            p[n-1] *=nums[i]
+        
+        for i in range(n-1):
+            left[i+1] = left[i]*nums[i+1]
+        
+        for i in range(n-1,1,-1):
+            right[i-1] = right[i]*nums[i-1]
+        
+        for i in range(1,n-1):
+            p[i] =left[i-1]*right[i+1]
+        return p
