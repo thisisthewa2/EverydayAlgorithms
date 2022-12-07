@@ -1,1 +1,16 @@
+"""
+minus*minus
+plus*plus
+"""
 
+class Solution:
+    def maxProduct(self, nums: List[int]) -> int:
+        localMin= localMax= globalMax = nums[0]
+        
+        for n in nums[1:]:
+            tmp = localMax
+            localMax = max(n,n*localMax,n*localMin)
+            localMin = min(n,n*localMin,n*tmp)
+            globalMax = max(globalMax,localMax)
+
+        return globalMax
