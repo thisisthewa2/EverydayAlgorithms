@@ -1,0 +1,21 @@
+#1. 
+import sys
+item =[[0,0]]
+N, K = map(int, input().split()) #입력받을 아이템 개수 & 최대 무게 
+knapsack=[[0 for _ in range(K+1)] for _ in range(N+1)] #아이템 개수(번호)&무게별 최대 가치 저장
+
+for _ in range(N):
+  item.append(list(map(int, input().split()))) #무게 & 가치
+
+for i in range(1,N+1): #1부터 시작
+  for j in range(1,K+1): 
+    
+    weight = item[i][0]
+    value = item[i][1]
+
+    if j < weight:
+      knapsack[i][j] = knapsack[i-1][j]
+    else:
+      knapsack[i][j] = max(knapsack[i-1][j-weight]+value,knapsack[i-1][j])
+      #max(현재 물건 가치 + dp[이전 물건][현재 가방 무게 - 현재 물건 무게], dp[이전 물건][현재 가방 무게])
+print(knapsack[N][K])
