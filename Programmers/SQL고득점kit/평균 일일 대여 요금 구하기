@@ -1,0 +1,5 @@
+-- 코드를 입력하세요
+SELECT ROUND(AVG(DAILY_FEE),0) AS 'AVERAGE_FEE'
+FROM CAR_RENTAL_COMPANY_CAR 
+WHERE CAR_TYPE = 'SUV'
+#반드시 SELECT - FROM - WHERE 순서대로, 반올림: AVG(숫자/열이름,반올림할값(0이소숫점첫째자리))
