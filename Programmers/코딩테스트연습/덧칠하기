@@ -1,0 +1,10 @@
+from collections import deque
+def solution(n, m, section):
+    answer = 0
+    section = deque(section)
+    while section:
+        start = section.popleft() #페인트칠 시작지점
+        while section and start + m > section[0]: #이미 덧칠했다면 (한 번 페인트질하는 범위에 다음 구역까지 들어온다면 팝)
+            section.popleft()
+        answer += 1  #페인트칠 +1 
+    return answer
