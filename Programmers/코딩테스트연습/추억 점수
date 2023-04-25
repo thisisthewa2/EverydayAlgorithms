@@ -1,0 +1,11 @@
+def solution(name, yearning, photo):
+    miss = dict(zip(name,yearning))
+    
+    result = []
+    for p in photo:
+        answer = 0
+        for i in p:
+            answer += miss.get(i,0) #dict.get(key, default=None)
+        result.append(answer)
+        
+    return result
