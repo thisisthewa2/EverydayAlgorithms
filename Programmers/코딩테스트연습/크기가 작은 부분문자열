@@ -1,0 +1,8 @@
+def solution(t, p):
+    s = len(p) #부분문자열 길이
+    answer = 0
+    
+    for i in range(len(t)-s+1):
+        if int(t[i:i+s]) <= int(p): #슬라이싱 이용
+            answer+=1
+    return answer
