@@ -1,0 +1,18 @@
+def solution(players, callings):
+    #enumerate를 이용해 인덱스와 원소에 동시 접근
+    #딕셔너리로 선수: 등수, 등수: 선수 저장
+    idx = {i: player for i,player in enumerate(players)} #등수: 선수
+    p = {player: i for i, player in enumerate(players)} #선수: 등수
+    
+    for call in callings:
+        rank = p[call] #현재등수
+        prank = rank-1 #앞등수
+        pplayer = idx[prank] #앞선수
+        
+        idx[prank] = call #추월선수를 앞등수로 올리기
+        idx[rank] = pplayer #아랫등수로 다운
+        
+        p[call] = prank
+        p[pplayer] = rank
+        
+    return list(idx.values())
