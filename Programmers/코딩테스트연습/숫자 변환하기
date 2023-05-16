@@ -1,0 +1,25 @@
+#Python3
+#1. DP
+"""
+DP [][][][][][][]..[]
+    0 1 2 3 .. x....y
+array DP[z] saves the minimum number of operations required to make x equal to z
+DP[x] = 0
+"""
+
+def solution(x: int, y: int, n: int) -> int:
+    DP = [1e9 for _ in range(y+1)]
+    DP[x] = 0
+    
+    for i in range(x,y+1):
+        if i + n <= y:
+            DP[i+n] = min(DP[i]+1, DP[i+n])
+            #if x=10,y=40,n=5: DP[15] = min(1,DP[15])=1, DP[16] = min(DP[11]+1,DP[16]) =1e9,..,DP[40]=min(DP[38]+1,DP[40])
+        if i * 2 <= y:
+            DP[i*2] = min(DP[i]+1, DP[i*2])
+            #DP[20] = min(1,DP[20])=1,DP[22],DP[24],DP[26]..DP[40] = min(DP[20]+1,DP[20) = 2
+        if i * 3 <= y:
+            DP[i*3] = min(DP[i]+1, DP[i*3])
+    if DP[y] == 1e9:
+        DP[y] = -1
+    return DP[y]
