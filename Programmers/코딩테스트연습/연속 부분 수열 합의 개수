@@ -1,0 +1,20 @@
+"""
+슬라이싱 사용, 
+i부터 n의 길이만큼 더해야할 때 연속하는 부분은 
+[i:] + [:i+n-len(elements)]
+
+"""
+def solution(elements):
+    answer = 0
+    arr = set()
+    l = len(elements)
+    n = 0
+    while n != l:
+        n+=1
+        for i in range(l):
+            if i + n >= l: # 범위를 넘어가는 경우
+                arr.add(sum(elements[i:] + elements[:i+n-l]))
+            else:
+                arr.add(sum(elements[i:i+n]))
+        
+    return len(arr)
