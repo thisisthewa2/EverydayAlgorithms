@@ -1,0 +1,17 @@
+def is_group_word(w):
+    word_set = set()
+    word_set.add(w[0])
+    for i in range(1, len(w)):
+        if w[i] in word_set and w[i] != w[i-1]:
+            return False
+        word_set.add(w[i])
+
+    return True
+
+N = int(input()) #단어의 개수
+total = 0
+for _ in range(N):
+    word = input()
+    if is_group_word(word) == True:
+        total += 1
+print(total)
